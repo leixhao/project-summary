@@ -41,3 +41,10 @@ let quickSort = function (arr) {
 }
 let arr1 = [2, 9, 6, 7, 4, 3, 1, 7]
  console.log(quickSort(arr1))
+
+
+var str = "2020-11-09 17:08:30";
+var str2 = Date.parse(new Date(str));
+console.log(str2)
+console.log(new Date().getTime())
+console.log(parseInt(Math.abs(new Date().getTime()-str2)/1000/60))

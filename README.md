@@ -46,3 +46,24 @@ const deepClone = (obj) => {
 ### gojs使用
 当一个选项可以被拖动到不同被选区域时，判断条件会以一个新的基准判断。如：key的判断，两个区域第一次出现的相同选项key值可能会相同。
 go.js 中的每个元素中会有一个维护标识 (obj.selectedNode.data.__gohashid)
+
+### 前后端不分离 
+在后端集成前端项目的时候，需要将前后端请求地址及接口前缀匹配一致
+vue项目中配置两个跨端接口前缀时，可能会存在当前服务器地址之外的另一个服务接口请求失败的情况
+解决方案：
+后端做了另一个接口地址的请求代理，接收请求并转发
+其他可能方案：
+将接口前缀提出来单独写成js直接引入到index.html中，并在接口打包处做修改。
+
+### 集成登陆
+在请求拦截处添加未登录状态拦截，并且在退出登录添加代码
+两处都是请求sso地址
+```
+if (data.status == 401) {
+  // console.log(`${data.data.service}${document.location.origin}${data.redirect}${document.location.href}`);
+  location.href = `${data.data.service}${document.location.origin}${data.data.redirect}${document.location.href}`;
+} 
+loginOut().then(res => {
+  location.href = `${res.data.service}${document.location.origin}${res.data.redirect}${document.location.href}`;
+});
+```
