@@ -1,12 +1,12 @@
-### 写一些项目中遇到的小坑点
-#### iview组件使用注意事项
-##### iview tabs层级显示问题
+## 写一些项目中遇到的小坑点
+### iview组件使用注意事项
+#### iview tabs层级显示问题
 iview组件中当嵌套使用 Tabs时，需要在Tabs中指定 name 属性来区分层级，然后在TabPane 中设置 tab 属性指向对应 Tabs 的 name 字段。
 参考：https://blog.csdn.net/wang_xiao_ye/article/details/90023979
-#### iview问题
+### iview问题
 最近一个项目中使用了iview，其中时间选择器点击左边按钮会出现左侧时间不会联动的情况，本来是猜想可能是因为项目中使用了element的原因，可能会有什么冲突，但是将element的时间组件注释后，还是无法解决问题。
 将iview的版本回退到3.4.1之后，问题解决，猜想，可能是iview3.5.4版本组件本身问题？不可知晓。
-#### vuex
+### vuex
 项目中有遇到引用了vuex的值并进行存储的地方，要注意是否需要拷贝
 深拷贝与浅拷贝的区别：指针
 尽量避免使用=，Array.from()、Object.assign()复制数组都是浅拷贝，修改vuex内的数据同样会使已存储的数据发生改变
