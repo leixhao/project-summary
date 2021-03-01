@@ -74,3 +74,12 @@ loginOut().then(res => {
   location.href = `${res.data.service}${document.location.origin}${res.data.redirect}${document.location.href}`;
 });
 ```
+
+## 写一些知识点
+### vue的模板编译原理
+分为三步：
+```
+1、将模板字符串转换为element ASTs树(解析器)
+2、对ASTs中的静态节点进行标记(优化器)
+3、使用ASTs树生成render函数代码字符串(代码生成器)
+```

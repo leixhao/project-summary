@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Tutorial Demo</title>
+</head>
+
+<body>
+  <div id="mountNode">
+
+  </div>
+  <!-- 引入 G6 -->
+  <script src="https://gw.alipayobjects.com/os/antv/pkg/_antv.g6-3.7.1/dist/g6.min.js"></script>
+  <script>
+    console.log(G6.Global.version);
+    const initData = {
+      nodes: [
+        {
+          id: 'node1',
+          x: 100,
+          y: 200,
+          label: '起始点',
+          type: 'rect',
+          size: [40,20],
+        }, {
+          id: 'node2',
+          x: 300,
+          y: 200,
+          label: '结束点',
+        }
+      ],
+      edges: [
+        {
+          source: 'node1',
+          target: 'node2',
+          label: '我是连接线条'
+        }
+      ]
+    };
+    const graph = new G6.Graph({
+      container: 'mountNode',
+      width: 800,
+      height: 900,
+      defaultNode:{
+        style:{
+          fill: ''
+        }
+      }
+    })
+    graph.data(initData);
+    graph.render();
+  </script>
+</body>
+
+</html>
