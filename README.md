@@ -6,6 +6,47 @@ iview组件中当嵌套使用 Tabs时，需要在Tabs中指定 name 属性来区
 ### iview问题
 最近一个项目中使用了iview，其中时间选择器点击左边按钮会出现左侧时间不会联动的情况，本来是猜想可能是因为项目中使用了element的原因，可能会有什么冲突，但是将element的时间组件注释后，还是无法解决问题。
 将iview的版本回退到3.4.1之后，问题解决，猜想，可能是iview3.5.4版本组件本身问题？不可知晓。
+
+### iview tooltip文字提示数字或特殊字符不会换行问题
+使用render函数方式写tooltip，在span中增加样式whiteSpace: "pre-wrap",wordWrap: 'break-word'
+eg:
+```
+render: (h, params) => {
+  let texts = params.row.iconPath;
+  if (texts) {
+    if (texts.length > 17) {
+      texts = texts.slice(0, 16) + "..."; // 进行数字截取
+    } else {
+      texts = texts;
+    }
+  }
+  return h("div", [
+    h(
+      "Tooltip",
+      {
+        props: {
+          placement: "right-end",
+          transfer: true,
+        },
+      },
+      [
+        texts,
+        h(
+          "span",
+          {
+            slot: "content",
+            style: {
+              whiteSpace: "pre-wrap",
+              wordWrap: 'break-word'
+            },
+          },
+          params.row.iconPath
+        ),
+      ]
+    ),
+  ]);
+},
+```
 ### vuex
 项目中有遇到引用了vuex的值并进行存储的地方，要注意是否需要拷贝
 深拷贝与浅拷贝的区别：指针
