@@ -106,7 +106,7 @@ const deepClone = (obj) => {
   }
   ```
 
-### gojs使用
+### go.js使用
 
 当一个选项可以被拖动到不同被选区域时，判断条件会以一个新的基准判断。如：key的判断，两个区域第一次出现的相同选项key值可能会相同。
 go.js 中的每个元素中会有一个维护标识 (obj.selectedNode.data.__gohashid)
