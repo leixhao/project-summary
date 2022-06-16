@@ -61,7 +61,7 @@ render: (h, params) => {
 项目中有个地方需要对提交信息做空值判断，并删除空值字段
 其中有个判断0的参数，使用了 == 双等 与 ''空字符串进行判断
 在判断中，双等判断会进行隐式转换，0被隐式转换为false，''空字符串也被转换为false，所以出了bug(0==''，成了true)
-这种判断必须使用===三等进行判断
+这种情况下判断必须使用===三等进行判断
 
 ### vuex
 
@@ -157,4 +157,14 @@ loginOut().then(res => {
 1、将模板字符串转换为element ASTs树(解析器)
 2、对ASTs中的静态节点进行标记(优化器)
 3、使用ASTs树生成render函数代码字符串(代码生成器)
+```
+
+###前端模拟键盘按键点击
+
+网上大多百度出来的键盘点击API大多已经在废弃的状态中
+以下是MDN中最新的使用方式
+```
+var a = new KeyboardEvent("keydown", { detail: 1, view: window });
+Object.defineProperty(a, "keyCode", { value: key });
+document.dispatchEvent(a);
 ```
